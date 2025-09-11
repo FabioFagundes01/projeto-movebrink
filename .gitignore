@@ -1,0 +1,6 @@
+# Ignorar a pasta de JavaScript compilado
+/js/
+
+# Ficheiros do sistema operacional
+.DS_Store
+Thumbs.db

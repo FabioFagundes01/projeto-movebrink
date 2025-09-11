@@ -1,0 +1,546 @@
+/* --- RESET BÁSICO E VARIÁVEIS DE COR --- */
+:root {
+    --primary-color: #005A9C; /* Azul principal */
+    --secondary-color: #00838f; /* Verde-água escuro da referência */
+    --light-bg-color: #F0F4F8; /* Fundo cinza claro */
+    --text-color: #333333;
+    --white-color: #FFFFFF;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background-color: var(--white-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ESTILOS DO CABEÇALHO --- */
+.header {
+    background-color: var(--white-color);
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #00487a;
+}
+
+/* --- ESTILOS DA SEÇÃO HERO --- */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    color: var(--white-color);
+    text-align: center;
+    padding: 120px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button-hero {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button-hero:hover {
+    background-color: #00487a;
+}
+
+.page-title-header {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--light-bg-color);
+}
+
+/* --- ESTILOS PARA PÁGINA DE AMBIENTES/CATEGORIAS --- */
+.category-showcase {
+    padding: 40px 0;
+}
+
+.category-block {
+    display: flex;
+    margin: 40px 20px;
+    background-color: #f8f9fa;
+    min-height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.category-text-container,
+.category-image-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-text-container {
+    padding: 60px;
+    background-color: #e0f7fa;
+}
+
+.category-text-container.blue-bg {
+    background-color: #dde7f0;
+}
+
+.category-text-container h2 {
+    font-size: 36px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.category-text-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.category-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.category-block:hover .category-image-container img {
+    transform: scale(1.05);
+}
+
+.category-block.reverse {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 900px) {
+    .category-block,
+    .category-block.reverse {
+        flex-direction: column;
+    }
+}
+
+/* --- ESTILOS PARA PÁGINA "SOBRE NÓS" --- */
+.about-page-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px auto;
+    background-color: var(--white-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-sidebar {
+    flex-basis: 250px;
+    background-color: var(--secondary-color);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-sidebar h2 {
+    color: var(--white-color);
+    font-size: 36px;
+}
+
+.about-page-content {
+    flex: 1;
+}
+
+.about-page-content img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.about-page-content .text-content {
+    padding: 40px;
+}
+
+.about-page-content h3 {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.about-page-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.about-page-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-page-content li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.about-page-content li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+@media (max-width: 900px) {
+    .about-page-wrapper {
+        flex-direction: column;
+        margin: 20px;
+    }
+    .about-sidebar {
+        flex-basis: auto;
+        padding: 20px;
+    }
+}
+
+/* --- ESTILOS DA SECÇÃO DE CONTATO --- */
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--light-bg-color);
+}
+
+.contact-content {
+    display: flex;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.contact-info, .contact-form {
+    flex-basis: 50%;
+}
+
+.contact-info h3, .contact-form h3 {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* --- ESTILOS DO FORMULÁRIO --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: var(--white-color);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+    }
+}
+
+/* --- ESTILOS PARA VALIDAÇÃO DO FORMULÁRIO --- */
+.form-group small {
+    visibility: hidden;
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+    height: 15px;
+}
+
+.form-group.error small {
+    visibility: visible;
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+    border-color: #e74c3c;
+}
+
+.form-group.success input,
+.form-group.success textarea,
+.form-group.success select {
+    border-color: #2ecc71;
+}
+
+/* --- ESTILOS DO RODAPÉ --- */
+.footer {
+    background-color: #2c3e50;
+    color: var(--white-color);
+    padding: 60px 0 0 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-column .logo {
+    color: var(--white-color);
+    margin-bottom: 15px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-column p {
+    color: #ccc;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-column ul a:hover {
+    color: var(--white-color);
+    padding-left: 5px;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.newsletter-form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* --- ESTILOS PARA O MENU HAMBÚRGUER E NAVEGAÇÃO MOBILE --- */
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu-icon div {
+    width: 32px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        background-color: #2c3e50;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 40px;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+        z-index: 999;
+    }
+    
+    .header .cta-button {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .main-nav li {
+        margin: 10px 0;
+        width: 100%;
+    }
+    
+    .main-nav a {
+        color: var(--white-color);
+        font-size: 20px;
+        padding: 15px 0;
+        display: block;
+        width: 100%;
+    }
+
+    .main-nav a:hover {
+        background-color: var(--primary-color);
+    }
+    
+    .nav-active {
+        transform: translateX(0);
+    }
+
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle .line2 {
+        opacity: 0;
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+.map-container {
+    margin-top: 50px;
+    border-radius: 8px;
+    overflow: hidden; /* Essencial para que o mapa dentro dele respeite as bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra suave opcional */
+}
+.map-container iframe {
+    width: 100%;
+    display: block; /* Boa prática para remover espaços em branco debaixo do iframe */
+}
+/* Media query para empilhar os cartões de Missão/Visão/Valores em telas pequenas */
+@media (max-width: 768px) {
+    .mission-vision-values {
+        flex-direction: column;
+    }
+}
