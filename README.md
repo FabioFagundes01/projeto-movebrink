@@ -24,4 +24,4 @@ O projeto foi construído utilizando as seguintes tecnologias:
 - **Páginas Múltiplas:** Estrutura com páginas dedicadas para Início, Produtos/Ambientes, Sobre Nós e Contato.
 - **Menu Mobile:** Menu "hambúrguer" funcional para uma navegação fácil em dispositivos móveis.
 - **Validação de Formulário:** O formulário de contato valida os campos do lado do cliente com TypeScript.
-- **Animações de Scroll:** Elementos da página aparecem com animações suaves conforme o utilizador rola a página.
+
