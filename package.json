@@ -1,0 +1,16 @@
+{
+  "name": "projeto-movebrink",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da MoveBrink com backend simples para envio de contatos por e-mail.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.4"
+  }
+}

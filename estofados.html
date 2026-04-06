@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linha de Estofados - Movebrink</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+
+        /* =============================================
+           ESTILOS ESPECÍFICOS DA PÁGINA ESTOFADOS
+           ============================================= */
+
+        /* --- HERO ESTOFADOS --- */
+        .estofados-hero {
+            background: linear-gradient(135deg, #1a2b3c 0%, #0d1e2e 60%, #003f6e 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .estofados-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(0,90,156,0.3) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 30%, rgba(0,131,143,0.2) 0%, transparent 50%);
+        }
+
+        .estofados-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .andres-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 8px 20px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(4px);
+        }
+
+        .andres-badge span {
+            font-size: 13px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .andres-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+
+        .estofados-hero h1 {
+            font-size: 46px;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .estofados-hero h1 span {
+            color: #5bc8f5;
+        }
+
+        .estofados-hero p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.75);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .hero-certs {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .cert-badge i {
+            color: #5bc8f5;
+            font-size: 16px;
+        }
+
+        /* --- NAVEGAÇÃO CATEGORIAS --- */
+        .cat-nav-estofados {
+            background-color: #1a2b3c;
+            position: sticky;
+            top: 95px;
+            z-index: 900;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        .cat-nav-estofados .container {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .cat-nav-estofados .container::-webkit-scrollbar { display: none; }
+
+        .est-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 18px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 12.5px;
+            font-weight: 600;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .est-nav-link i {
+            font-size: 14px;
+        }
+
+        .est-nav-link:hover,
+        .est-nav-link.active {
+            color: #fff;
+            border-bottom-color: #5bc8f5;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* --- SEÇÕES --- */
+        .est-section {
+            padding: 70px 0;
+            scroll-margin-top: 145px;
+        }
+
+        .est-section:nth-child(even) {
+            background-color: #f4f8fc;
+        }
+
+        .est-section-header {
+            margin-bottom: 44px;
+        }
+
+        .est-section-header .tag {
+            display: inline-block;
+            background-color: #1a2b3c;
+            color: #5bc8f5;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .est-section-header h2 {
+            font-size: 32px;
+            color: #1a2b3c;
+            margin-bottom: 8px;
+        }
+
+        .est-section-header p {
+            font-size: 15px;
+            color: #666;
+            max-width: 600px;
+        }
+
+        /* --- GRID ESTOFADOS --- */
+        .est-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .est-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .est-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+        }
+
+        .est-card-img-wrap {
+            background: linear-gradient(135deg, #e8f0f8 0%, #dde8f4 100%);
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            position: relative;
+        }
+
+        .est-card-img-wrap img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+            transition: transform 0.4s ease;
+        }
+
+        .est-card:hover .est-card-img-wrap img {
+            transform: scale(1.06);
+        }
+
+        .est-card-body {
+            padding: 18px 20px 20px;
+        }
+
+        .est-card-code {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .est-card-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a2b3c;
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .est-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .est-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background-color: #eef4fb;
+            color: #1a4a7a;
+        }
+
+        .est-tag.green {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .est-tag.orange {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        .est-card-cta {
+            display: block;
+            text-align: center;
+            background-color: #1a2b3c;
+            color: #fff;
+            padding: 10px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background-color 0.2s ease;
+        }
+
+        .est-card-cta:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* --- CARD LARGO (destaque) --- */
+        .est-grid-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .est-card-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .est-card-highlight:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+        }
+
+        .est-card-highlight .est-card-img-wrap {
+            height: 100%;
+            min-height: 200px;
+        }
+
+        .est-card-highlight .est-card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- BANNER CERTIFICAÇÕES --- */
+        .cert-banner {
+            background: linear-gradient(135deg, #005A9C 0%, #003f6e 100%);
+            padding: 50px 0;
+            color: #fff;
+        }
+
+        .cert-banner-inner {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .cert-banner-text {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .cert-banner-text h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cert-banner-text p {
+            font-size: 15px;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        .cert-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 16px 20px;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .cert-item i {
+            font-size: 28px;
+            color: #5bc8f5;
+        }
+
+        .cert-item div {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .cert-item span {
+            font-size: 11px;
+            opacity: 0.75;
+            font-weight: 400;
+            display: block;
+        }
+
+        /* --- CONTATO ANDRES --- */
+        .andres-contact {
+            background-color: #1a2b3c;
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        .andres-contact h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .andres-contact p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .contact-chips {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            padding: 12px 22px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .contact-chip:hover {
+            background: rgba(91,200,245,0.2);
+            border-color: #5bc8f5;
+        }
+
+        .contact-chip i {
+            color: #5bc8f5;
+            font-size: 16px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 900px) {
+            .est-grid-highlight {
+                grid-template-columns: 1fr;
+            }
+            .est-card-highlight {
+                grid-template-columns: 1fr;
+            }
+            .est-card-highlight .est-card-img-wrap {
+                height: 220px;
+            }
+            .cert-banner-inner {
+                gap: 30px;
+            }
+            .estofados-hero h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .est-grid {
+                grid-template-columns: 1fr;
+            }
+            .est-nav-link {
+                padding: 12px 14px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 1180px) {
+            .cat-nav-estofados .container {
+                justify-content: flex-start;
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo1.png" alt="Logo Movebrink"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="moveis-escolares.html">Móveis Escolares</a></li>
+                    <li><a href="estofados.html" style="color: #5bc8f5;">Estofados</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <a href="contato.html" class="cta-button">Solicite um Orçamento</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="estofados-hero">
+        <div class="container">
+            <div class="andres-badge" data-aos="fade-down">
+                <div class="dot"></div>
+                <span>Linha Andres Estofados — Distribuída pela MoveBrink</span>
+            </div>
+            <h1 data-aos="fade-up" data-aos-delay="100">
+                Cadeiras para <span>Escritório</span><br>e Ambientes Corporativos
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="200">
+                Conforto, ergonomia e durabilidade em cada modelo. Certificados pela ABNT NBR 13962, com sistema de gestão ISO 9001.
+            </p>
+            <div class="hero-certs" data-aos="fade-up" data-aos-delay="300">
+                <div class="cert-badge">
+                    <i class="fas fa-certificate"></i>
+                    ISO 9001 Certificado
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    ABNT NBR 13962
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-star"></i>
+                    Selo BGQ
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVEGAÇÃO POR CATEGORIA -->
+    <nav class="cat-nav-estofados">
+        <div class="container">
+            <a href="#cadeiras-simples" class="est-nav-link active">
+                <i class="fas fa-chair"></i> Cadeiras Simples
+            </a>
+            <a href="#cadeiras-giratorias" class="est-nav-link">
+                <i class="fas fa-sync-alt"></i> Giratórias s/ Braço
+            </a>
+            <a href="#cadeiras-com-braco" class="est-nav-link">
+                <i class="fas fa-arrows-alt-h"></i> Giratórias c/ Braço
+            </a>
+            <a href="#cadeiras-diretor" class="est-nav-link">
+                <i class="fas fa-user-tie"></i> Diretor / Presidente
+            </a>
+            <a href="#cadeiras-plataforma" class="est-nav-link">
+                <i class="fas fa-layer-group"></i> Plataforma
+            </a>
+            <a href="#poltronas" class="est-nav-link">
+                <i class="fas fa-couch"></i> Poltronas / Longarinas
+            </a>
+            <a href="#linha-frisokar" class="est-nav-link">
+                <i class="fas fa-star"></i> Frisokar
+            </a>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Catálogo Oficial</span>
+                    <h2>Referência Visual Andres Estofados 2025</h2>
+                    <p>As imagens desta página foram alinhadas ao catálogo oficial enviado. Os cards abaixo utilizam recortes e referências visuais das páginas do catálogo para refletir com mais fidelidade a linha comercial apresentada.</p>
+                </div>
+
+                <div class="line-catalog-grid">
+                    <div class="line-catalog-card" data-aos="fade-up">
+                        <img class="line-catalog-image" src="images/catalogo/andres-page-01.png" alt="Página 1 do catálogo oficial Andres Estofados 2025">
+                        <h3>Página 1 do Catálogo</h3>
+                        <p>Confirma as linhas AES, AEE, AEL e AEB, incluindo cadeiras simples, escritório, longarinas e banquetas com seus respectivos códigos técnicos.</p>
+                    </div>
+
+                    <div class="line-catalog-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="line-catalog-image" src="images/catalogo/andres-page-02.png" alt="Página 2 do catálogo oficial Andres Estofados 2025">
+                        <h3>Página 2 do Catálogo</h3>
+                        <p>Reúne as linhas AED, AEP, AEPL, AEPP e a família Frisokar, incluindo cadeiras diretor, plataforma, longarinas operacionais e modelos premium.</p>
+                    </div>
+                </div>
+
+                <p class="catalog-note" data-aos="fade-up">Os nomes, códigos e agrupamentos desta página foram verificados com o catálogo Andres Estofados 2025. As imagens locais em <strong>images/estofados</strong> agora usam referências oficiais do material enviado.</p>
+            </div>
+        </section>
+
+        <!-- ==============================
+             CADEIRAS SIMPLES (AES)
+             ============================== -->
+        <section id="cadeiras-simples" class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Cadeiras Simples</span>
+                    <h2>Linha AES — Cadeiras Fixas</h2>
+                    <p>Cadeiras fixas sem rodízio, ideais para recepções, salas de espera e frente de escrivaninhas. Assento e encosto estofados.</p>
+                </div>
+
+                <div class="est-grid">
+                    <!-- AES 1001F S/B -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1001f-sb.png" alt="AES 1001F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1001F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1001F S/B</p>
+                            <h3 class="est-card-name">Cadeira Fixa — Estrutura 4 Pés</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Fixo</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1002F S/B -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1002f-sb.png" alt="AES 1002F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1002F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1002F S/B</p>
+                            <h3 class="est-card-name">Cadeira Fixa — Base Patim</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Base patim</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1003F S/B -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1003f-sb.png" alt="AES 1003F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1003F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1003F S/B</p>
+                            <h3 class="est-card-name">Cadeira Fixa — Encosto Alto</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Encosto alto</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1001G S/B -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1001g-sb.png" alt="AES 1001G S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1001G'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1001G S/B</p>
+                            <h3 class="est-card-name">Cadeira Giratória Simples s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1002G S/B -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1002g-sb.png" alt="AES 1002G S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1002G'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1002G S/B</p>
+                            <h3 class="est-card-name">Cadeira Giratória — Encosto Médio s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1003FC S/B -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1003fc-sb.png" alt="AES 1003FC S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1003FC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1003FC S/B</p>
+                            <h3 class="est-card-name">Cadeira Caixa / Alta — Fixa s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Caixa/Alta</span>
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1003G B/F -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1003g-bf.png" alt="AES 1003G B/F" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1003G'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1003G B/F</p>
+                            <h3 class="est-card-name">Cadeira Giratória c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Com braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1002G B/R -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1002g-br.png" alt="AES 1002G B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1002G+BR'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1002G B/R</p>
+                            <h3 class="est-card-name">Cadeira Giratória c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AES 1004FC B/R -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aes-1004fc-br.png" alt="AES 1004FC B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AES+1004FC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AES 1004FC B/R</p>
+                            <h3 class="est-card-name">Cadeira Caixa c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Caixa/Alta</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AEL 1001 S/B 3L -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/ael-1001-sb-3l.png" alt="AEL 1001 S/B 3L" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEL+1001+3L'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEL 1001 S/B 3L</p>
+                            <h3 class="est-card-name">Longarina 3 Lugares — Pés 4 Patas</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">3 lugares</span>
+                                <span class="est-tag">Longarina</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AEL 1002 S/B 2L -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/ael-1002-sb-2l.png" alt="AEL 1002 S/B 2L" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEL+1002+2L'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEL 1002 S/B 2L</p>
+                            <h3 class="est-card-name">Longarina 2 Lugares — Base Patim</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">2 lugares</span>
+                                <span class="est-tag">Base patim</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             CADEIRAS ESCRITÓRIO (AEE)
+             ============================== -->
+        <section id="cadeiras-giratorias" class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Linha Escritório</span>
+                    <h2>AEE — Cadeiras de Escritório s/ Braço</h2>
+                    <p>Cadeiras giratórias ergonômicas para uso em escritórios, call centers e home office.</p>
+                </div>
+
+                <div class="est-grid">
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2001f-sb.png" alt="AEE 2001F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2001F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2001F S/B</p>
+                            <h3 class="est-card-name">Cadeira Escritório Fixa s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2002f-sb.png" alt="AEE 2002F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2002F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2002F S/B</p>
+                            <h3 class="est-card-name">Cadeira Escritório — Encosto Tela s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2003f-bfc.png" alt="AEE 2003F B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2003F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2003F B/FC</p>
+                            <h3 class="est-card-name">Cadeira Fixa c/ Braço Fixo Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço fixo cromado</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <span id="cadeiras-com-braco" class="est-anchor"></span>
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2001g-bf.png" alt="AEE 2001G B/F" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2001G+BF'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2001G B/F</p>
+                            <h3 class="est-card-name">Cadeira Giratória c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2002g-br.png" alt="AEE 2002G B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2002G+BR'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2002G B/R</p>
+                            <h3 class="est-card-name">Cadeira Giratória c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2003g-br-bs.png" alt="AEE 2003G B/R BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2003G+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2003G B/R BS</p>
+                            <h3 class="est-card-name">Cadeira Giratória c/ Braço Regulável e Base em Aço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2001g-bf-t.png" alt="AEE 2001G B/F T" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2001G+BFT'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2001G B/F T</p>
+                            <h3 class="est-card-name">Cadeira Giratória c/ Braço Fixo e Tela</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2001g-sb-g.png" alt="AEE 2001G S/B G" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2001G+SBG'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2001G S/B G</p>
+                            <h3 class="est-card-name">Cadeira Giratória — Encosto Tela Verde s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela verde</span>
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2002fc-sb.png" alt="AEE 2002FC S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2002FC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2002FC S/B</p>
+                            <h3 class="est-card-name">Cadeira Caixa de Escritório s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Caixa/Alta</span>
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2002g-bf-t.png" alt="AEE 2002G B/F T" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2002G+BFT'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2002G B/F T</p>
+                            <h3 class="est-card-name">Cadeira Giratória Tela c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2002f-bfc.png" alt="AEE 2002F B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2002F+BFC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2002F B/FC</p>
+                            <h3 class="est-card-name">Cadeira Fixa Tela c/ Braço Fixo Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag">Fixa</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aee-2002f-sb.png" alt="AEE 2002F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEE+2002F+SB'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEE 2002F S/B</p>
+                            <h3 class="est-card-name">Cadeira Fixa Tela s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Fixa</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- Longarinas -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/ael-2001-bc-3l.png" alt="AEL 2001 B/C 3L" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEL+2001+3L'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEL 2001 B/C 3L</p>
+                            <h3 class="est-card-name">Longarina Escritório 3 Lugares c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">3 lugares</span>
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag">Longarina</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/ael-2002-sb-3l.png" alt="AEL 2002 S/B 3L" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEL+2002+3L'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEL 2002 S/B 3L</p>
+                            <h3 class="est-card-name">Longarina Escritório 3 Lugares s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">3 lugares</span>
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Longarina</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aeeu-2003f.png" alt="AEEU 2003F" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEEU+2003F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEEU 2003F</p>
+                            <h3 class="est-card-name">Cadeira em U — Fixa</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Design U</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             CADEIRAS DIRETOR (AED)
+             ============================== -->
+        <section id="cadeiras-diretor" class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Linha Diretor</span>
+                    <h2>AED — Cadeiras Diretor e Gerência</h2>
+                    <p>Linha premium com encosto alto, materiais nobres e acabamento refinado para posições de liderança.</p>
+                </div>
+
+                <div class="est-grid">
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3001f-bfc.png" alt="AED 3001F B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3001F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3001F B/FC</p>
+                            <h3 class="est-card-name">Cadeira Diretor Fixa c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aedl-3001f-sb.png" alt="AEDL 3001F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEDL+3001F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEDL 3001F S/B</p>
+                            <h3 class="est-card-name">Cadeira Diretor Fixa s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3002f-bfc.png" alt="AED 3002F B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3002F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3002F B/FC</p>
+                            <h3 class="est-card-name">Cadeira Diretor Fixa c/ Braço Cromado — Modelo 2</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3001g-bfc.png" alt="AED 3001G B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3001G+BFC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3001G B/FC</p>
+                            <h3 class="est-card-name">Cadeira Diretor Giratória c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3001g-bbfc-bs.png" alt="AED 3001G B/BFC BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3001G+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3001G B/BFC BS</p>
+                            <h3 class="est-card-name">Cadeira Diretor Giratória — Base Aço c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3002g-br-bs.png" alt="AED 3002G B/R BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3002G+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3002G B/R BS</p>
+                            <h3 class="est-card-name">Cadeira Diretor — Base Aço c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3003gc-bf.png" alt="AED 3003GC B/F" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3003GC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3003GC B/F</p>
+                            <h3 class="est-card-name">Cadeira Diretor Cromada c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base cromada</span>
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3002g-bft.png" alt="AED 3002G B/FT" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3002G+BFT'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3002G B/FT</p>
+                            <h3 class="est-card-name">Cadeira Diretor Giratória c/ Braço Fixo e Tela</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aedg-3003g-bfc.png" alt="AEDG 3003G B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEDG+3003G'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEDG 3003G B/FC</p>
+                            <h3 class="est-card-name">Cadeira Diretor Tela Cromada c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Base cromada</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aedr-3001g-br.png" alt="AEDR 3001G B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEDR+3001G'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEDR 3001G B/R</p>
+                            <h3 class="est-card-name">Cadeira Diretor Reclináv. c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Reclinável</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3004gt-br.png" alt="AED 3004GT B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3004GT'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3004GT B/R</p>
+                            <h3 class="est-card-name">Cadeira Diretor Tela Alta c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Encosto alto</span>
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aed-3005gt-br-bs.png" alt="AED 3005GT B/R BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AED+3005GT+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AED 3005GT B/R BS</p>
+                            <h3 class="est-card-name">Cadeira Diretor Tela — Base Aço c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             CADEIRAS PLATAFORMA (AEP)
+             ============================== -->
+        <section id="cadeiras-plataforma" class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Linha Plataforma</span>
+                    <h2>AEP — Cadeiras Plataforma e Operacionais</h2>
+                    <p>Cadeiras operacionais robustas, ideais para uso intenso em escritórios, indústrias e postos de trabalho.</p>
+                </div>
+
+                <div class="est-grid">
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4001g-bf.png" alt="AEP 4001G B/F" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4001G+BF'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4001G B/F</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Giratória c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4002gc-bf.png" alt="AEP 4002GC B/F" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4002GC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4002GC B/F</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Cromada c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base cromada</span>
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4003g-br.png" alt="AEP 4003G B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4003G+BR'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4003G B/R</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Giratória c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4004g-bfc.png" alt="AEP 4004G B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4004G+BFC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4004G B/FC</p>
+                            <h3 class="est-card-name">Cadeira Plataforma c/ Braço Fixo Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aepg-4005g-bfc.png" alt="AEPG 4005G B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEPG+4005G'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEPG 4005G B/FC</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Tela c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4006g-bft.png" alt="AEP 4006G B/FT" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4006G+BFT'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4006G B/FT</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Tela c/ Braço Fixo</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Braço fixo</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4001g-br-bs.png" alt="AEP 4001G B/R BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4001G+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4001G B/R BS</p>
+                            <h3 class="est-card-name">Cadeira Plataforma — Base Aço c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aepp-4001f-sb.png" alt="AEPP 4001F S/B" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEPP+4001F'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEPP 4001F S/B</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Fixa s/ Braço</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Sem braço</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aep-4001f-bfc.png" alt="AEP 4001F B/FC" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEP+4001F+BFC'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEP 4001F B/FC</p>
+                            <h3 class="est-card-name">Cadeira Plataforma Fixa c/ Braço Cromado</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Braço cromado</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             POLTRONAS E LONGARINAS (AEL)
+             ============================== -->
+        <section id="poltronas" class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Poltronas e Longarinas</span>
+                    <h2>AEPL / AEPP — Plataforma c/ Longarina</h2>
+                    <p>Longarinas e cadeiras interligadas para salas de espera, recepções e auditórios.</p>
+                </div>
+
+                <div class="est-grid">
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aepl-4001f-br.png" alt="AEPL 4001F B/R" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEPL+4001F+BR'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEPL 4001F B/R</p>
+                            <h3 class="est-card-name">Longarina Plataforma Fixa c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Longarina</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag">Fixa</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aepl-4001g-br-bs.png" alt="AEPL 4001G B/R BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEPL+4001G+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEPL 4001G B/R BS</p>
+                            <h3 class="est-card-name">Longarina Plataforma Giratória — Base Aço c/ Braço Regulável</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aepp-4001g-br-bs.png" alt="AEPP 4001G B/R BS" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEPP+4001G+BS'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEPP 4001G B/R BS</p>
+                            <h3 class="est-card-name">Cadeira Plataforma — Base Aço c/ Braço Regulável (BS)</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Base aço</span>
+                                <span class="est-tag">Braço regulável</span>
+                                <span class="est-tag orange">Giratória</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- AEB banquetas -->
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aeb-0003.png" alt="AEB 0003" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEB+0003'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEB 0003</p>
+                            <h3 class="est-card-name">Banqueta Redonda — Giratória Alta</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Banqueta</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aeb-0002.png" alt="AEB 0002" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEB+0002'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEB 0002</p>
+                            <h3 class="est-card-name">Banqueta Redonda com Rodízios</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Banqueta</span>
+                                <span class="est-tag">Com rodízios</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/aeb-0001.png" alt="AEB 0001" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=AEB+0001'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">AEB 0001</p>
+                            <h3 class="est-card-name">Banqueta sem Encosto com Rodízios</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Banqueta</span>
+                                <span class="est-tag">Sem encosto</span>
+                                <span class="est-tag green">Estofado</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             LINHA FRISOKAR
+             ============================== -->
+        <section id="linha-frisokar" class="est-section">
+            <div class="container">
+                <div class="est-section-header" data-aos="fade-up">
+                    <span class="tag">Linha Frisokar</span>
+                    <h2>Cadeiras Frisokar — Design Premium</h2>
+                    <p>Modelos exclusivos da linha Frisokar: ergonomia avançada, materiais de alta qualidade e design sofisticado.</p>
+                </div>
+
+                <div class="est-grid">
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-addit-presidente-cabeca.png" alt="Addit Presidente c/ encosto de cabeça" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Addit+Presidente+CH'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Addit Presidente c/ Encosto de Cabeça</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Encosto de cabeça</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-addit-presidente.png" alt="Addit Presidente" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Addit+Presidente'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Addit Presidente</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-addit-diretor.png" alt="Addit Diretor" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Addit+Diretor'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Addit Diretor</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-volt.png" alt="Volt" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Volt'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Volt</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag orange">Giratória</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-goah.png" alt="Goah" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Goah'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Goah</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Assento estofado</span>
+                                <span class="est-tag">Tela verde</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-office-inbox.png" alt="Office InBox" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Office+InBox'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Office InBox</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Tela/Mesh</span>
+                                <span class="est-tag">Design moderno</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-agile.png" alt="Agile" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Agile'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Agile</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag">Design empilhável</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-up.png" alt="Up!" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Up!'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Up!</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Polipropileno</span>
+                                <span class="est-tag">Colorida</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="est-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="est-card-img-wrap">
+                            <img src="images/estofados/frisokar-bit.png" alt="Bit" onerror="this.src='https://placehold.co/300x260/dde8f4/005A9C?text=Bit'">
+                        </div>
+                        <div class="est-card-body">
+                            <p class="est-card-code">FRISOKAR</p>
+                            <h3 class="est-card-name">Bit</h3>
+                            <div class="est-card-tags">
+                                <span class="est-tag">Design minimalista</span>
+                                <span class="est-tag">Fixa</span>
+                                <span class="est-tag green">Premium</span>
+                            </div>
+                            <a href="contato.html" class="est-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER CERTIFICAÇÕES -->
+        <div class="cert-banner" data-aos="fade-up">
+            <div class="container">
+                <div class="cert-banner-inner">
+                    <div class="cert-banner-text">
+                        <h3>Qualidade Certificada</h3>
+                        <p>A linha Andres Estofados é distribuída pela MoveBrink e possui todas as certificações exigidas pelo mercado, garantindo segurança, durabilidade e conformidade com as normas brasileiras.</p>
+                    </div>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <i class="fas fa-certificate"></i>
+                            <div>ISO 9001<span>Sistema de Gestão da Qualidade</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>ABNT NBR 13962<span>Móveis para Escritório — Cadeiras</span></div>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-award"></i>
+                            <div>Selo BGQ<span>Certificado por Organismo Acreditado</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTATO ANDRES -->
+        <div class="andres-contact" data-aos="fade-up">
+            <div class="container">
+                <h3>Solicite um Orçamento</h3>
+                <p>Entre em contato com nossa equipe e encontre o modelo ideal para o seu espaço.</p>
+                <div class="contact-chips">
+                    <a href="contato.html" class="contact-chip">
+                        <i class="fas fa-envelope"></i>
+                        Formulário de Contato
+                    </a>
+                    <a href="tel:4234631492" class="contact-chip">
+                        <i class="fas fa-phone"></i>
+                        (42) 3463-1492
+                    </a>
+                    <a href="https://wa.me/5542991121931" target="_blank" class="contact-chip">
+                        <i class="fab fa-whatsapp"></i>
+                        (42) 99112-1931
+                    </a>
+                    <a href="mailto:andres.estofados@hotmail.com" class="contact-chip">
+                        <i class="fas fa-at"></i>
+                        andres.estofados@hotmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo"><img src="images/logo1.png" alt="Logo Movebrink"></a>
+                    <p>Criando ambientes de trabalho e estudo mais funcionais e inspiradores.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="moveis-escolares.html">Móveis Escolares</a></li>
+                        <li><a href="estofados.html">Estofados</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Precisa de Ajuda?</h4>
+                    <p>Fale conosco</p>
+                    <p><strong>(42) 3463-1492</strong></p>
+                    <p>contato@movebrink.com.br</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Receba novidades</h4>
+                    <p>Inscreva-se para receber ofertas e lançamentos.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button type="submit">Inscrever</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Movebrink. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.est-nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-145px 0px -60% 0px' });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
+        .est-anchor {
+            display: block;
+            position: relative;
+            top: -145px;
+            visibility: hidden;
+        }

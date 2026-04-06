@@ -1,6 +1,24 @@
 # Ignorar a pasta de JavaScript compilado
 /js/
+/node_modules/
+/.env
+/.env.local
+/.env.*
+!.env.example
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/pnpm-debug.log*
+/coverage/
+/dist/
+/build/
+/tmp/
+/temp/
 
 # Ficheiros do sistema operacional
 .DS_Store
 Thumbs.db
+
+# Ferramentas e arquivos locais
+/.vscode/
+/.idea/

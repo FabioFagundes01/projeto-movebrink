@@ -440,6 +440,133 @@ body {
     margin-bottom: 20px;
 }
 
+.contact-lead {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 24px;
+}
+
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 28px 0;
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    border: 1px solid #e6edf5;
+}
+
+.contact-card h4 {
+    font-size: 17px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e8edf2;
+    color: #444;
+    line-height: 1.7;
+}
+
+.contact-list li:last-child {
+    border-bottom: none;
+}
+
+.contact-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0 0;
+}
+
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background-color: #eef4fb;
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.contact-form-note {
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.contact-form-status {
+    display: none;
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.contact-form-status.is-visible {
+    display: block;
+}
+
+.contact-form-status.is-success {
+    background: #e9f8ef;
+    border: 1px solid #9bd3af;
+    color: #1f6b39;
+}
+
+.contact-form-status.is-error {
+    background: #fff1f0;
+    border: 1px solid #f0b5ae;
+    color: #a33a30;
+}
+
+.contact-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.contact-cta-panel {
+    margin-top: 36px;
+    background: linear-gradient(135deg, #005A9C 0%, #003f6e 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+}
+
+.contact-cta-panel h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.contact-cta-panel p {
+    color: rgba(255,255,255,0.88);
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -482,9 +609,106 @@ body {
     display: block;
 }
 
+.info-highlight {
+    margin: 35px 0;
+    padding: 28px;
+    background-color: #f7fafd;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.info-highlight p {
+    margin-bottom: 14px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.info-highlight p:last-child {
+    margin-bottom: 0;
+}
+
+.mission-grid,
+.line-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 35px 0;
+}
+
+.mission-card,
+.line-catalog-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.mission-card h3,
+.line-catalog-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.mission-card p,
+.line-catalog-card p {
+    color: #555;
+    line-height: 1.8;
+}
+
+.catalog-reference {
+    margin: 40px 0 0;
+}
+
+.catalog-reference img,
+.line-catalog-image {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #dde6ef;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.catalog-lines-section {
+    padding: 30px 20px 70px;
+}
+
+.line-catalog-card .cta-button {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.tech-code-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+}
+
+.tech-code-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8edf2;
+    color: #444;
+    line-height: 1.6;
+}
+
+.tech-code-list li:last-child {
+    border-bottom: none;
+}
+
+.catalog-note {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #666;
+}
+
 @media (max-width: 768px) {
     .contact-content {
         flex-direction: column;
+    }
+
+    .contact-cards-grid,
+    .mission-grid,
+    .line-catalog-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -512,6 +736,11 @@ body {
 .form-group.success textarea,
 .form-group.success select {
     border-color: #2ecc71;
+}
+
+.contact-submit-button[disabled] {
+    opacity: 0.75;
+    cursor: wait;
 }
 
 /* --- ESTILOS DO RODAPÉ --- */

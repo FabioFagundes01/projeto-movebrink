@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Móveis Escolares - Movebrink</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* =============================================
+           ESTILOS ESPECÍFICOS DA PÁGINA MÓVEIS ESCOLARES
+           ============================================= */
+
+        /* --- NAVEGAÇÃO POR CATEGORIAS --- */
+        .category-nav {
+            background-color: #1a2b3c;
+            position: sticky;
+            top: 95px;
+            z-index: 900;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        .category-nav .container {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .category-nav .container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 22px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .cat-nav-link:hover,
+        .cat-nav-link.active {
+            color: #fff;
+            border-bottom-color: #5bc8f5;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* --- SEÇÕES DE PRODUTO --- */
+        .product-section {
+            padding: 70px 0;
+            scroll-margin-top: 140px;
+        }
+
+        .product-section:nth-child(even) {
+            background-color: #f7fafd;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 34px;
+            color: #1a2b3c;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- GRID DE PRODUTOS --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            background-color: #eef4fb;
+            padding: 20px;
+        }
+
+        .product-card-body {
+            padding: 20px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-card-code {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .product-card-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a2b3c;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-card-specs {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+            flex: 1;
+        }
+
+        .product-card-specs li {
+            font-size: 13.5px;
+            color: #555;
+            padding: 4px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .product-card-specs li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .product-card-sizes {
+            background-color: #eef4fb;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+        }
+
+        .product-card-sizes p {
+            font-size: 12.5px;
+            color: #444;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .product-card-sizes strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .product-card-cta {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 11px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .product-card-cta:hover {
+            background-color: #00487a;
+        }
+
+        /* --- CARD DESTAQUE (WIDE) --- */
+        .product-card-wide {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .product-card-wide .product-card-img {
+            height: 100%;
+            min-height: 260px;
+        }
+
+        /* --- DIFERENCIAIS BANNER --- */
+        .diferenciais-banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #003f6e 100%);
+            color: #fff;
+            padding: 50px 0;
+        }
+
+        .diferenciais-banner h3 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 36px;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .diferencial-item {
+            text-align: center;
+            padding: 24px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+
+        .diferencial-item .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .diferencial-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .diferencial-item p {
+            font-size: 13px;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        /* --- PALETA DE CORES PANTONE --- */
+        .pantone-section {
+            background-color: #1a2b3c;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .pantone-section h3 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .pantone-section p {
+            color: #aac4de;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .pantone-swatches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+        }
+
+        /* --- CTA ORÇAMENTO --- */
+        .orcamento-cta {
+            background-color: #f0f6fc;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .orcamento-cta h2 {
+            font-size: 28px;
+            color: #1a2b3c;
+            margin-bottom: 12px;
+        }
+
+        .orcamento-cta p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 28px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 900px) {
+            .product-card-wide {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+            .product-card-wide .product-card-img {
+                height: 240px;
+            }
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-header h2 {
+                font-size: 26px;
+            }
+            .cat-nav-link {
+                padding: 12px 14px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .category-nav .container {
+                justify-content: flex-start;
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo1.png" alt="Logo Movebrink"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="moveis-escolares.html" style="color: #f0c040;">Móveis Escolares</a></li>
+                    <li><a href="estofados.html">Estofados</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <a href="contato.html" class="cta-button">Solicite um Orçamento</a>
+        </div>
+    </header>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="page-title-header">
+        <h1 data-aos="fade-down">Móveis Escolares</h1>
+    </div>
+
+    <!-- NAVEGAÇÃO POR CATEGORIA -->
+    <nav class="category-nav">
+        <div class="container">
+            <a href="#conjunto-individual" class="cat-nav-link active">Conjunto Individual</a>
+            <a href="#conjunto-4-lugares" class="cat-nav-link">4 Lugares</a>
+            <a href="#conjunto-5-lugares" class="cat-nav-link">5 Lugares</a>
+            <a href="#conjunto-6-lugares" class="cat-nav-link">6 Lugares</a>
+            <a href="#conjunto-8-lugares" class="cat-nav-link">8 Lugares</a>
+            <a href="#refeitorio" class="cat-nav-link">Refeitório</a>
+            <a href="#professor" class="cat-nav-link">Professor</a>
+            <a href="#armarios" class="cat-nav-link">Armários</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ==============================
+             SEÇÃO: CONJUNTO INDIVIDUAL
+             ============================== -->
+        <section id="conjunto-individual" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto Individual</span>
+                    <h2>Carteira e Cadeira Individual</h2>
+                    <p>Tampo em ABS, estrutura em tubo de aço e pintura eletrostática. Disponível em 5 tamanhos para cada fase escolar.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/conjunto-individual/cj-mb01-maternal.jpg" alt="Conjunto Individual Maternal CJ MB 01" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJ+MB+01'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJ MB 01</p>
+                            <h3 class="product-card-name">Conjunto Maternal</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Faixa de estatura:</strong> 930 a 1.160 mm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/conjunto-individual/cj-mb03-infantil.jpg" alt="Conjunto Individual Infantil CJ MB 03" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJ+MB+03'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJ MB 03</p>
+                            <h3 class="product-card-name">Conjunto Infantil</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Faixa de estatura:</strong> 1.190 a 1.420 mm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/conjunto-individual/cj-mb04-juvenil.jpg" alt="Conjunto Individual Juvenil CJ MB 04" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJ+MB+04'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJ MB 04</p>
+                            <h3 class="product-card-name">Conjunto Juvenil</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Faixa de estatura:</strong> 1.330 a 1.590 mm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/conjunto-individual/cj-mb05-intermediario.jpg" alt="Conjunto Individual Intermediário CJ MB 05" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJ+MB+05'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJ MB 05</p>
+                            <h3 class="product-card-name">Conjunto Intermediário</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Faixa de estatura:</strong> 1.460 a 1.765 mm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/conjunto-individual/cj-mb06-adulto.jpg" alt="Conjunto Individual Adulto CJ MB 06" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJ+MB+06'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJ MB 06</p>
+                            <h3 class="product-card-name">Conjunto Adulto</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Faixa de estatura:</strong> 1.590 a 1.880 mm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER DIFERENCIAIS -->
+        <div class="diferenciais-banner" data-aos="fade-up">
+            <div class="container">
+                <h3>Diferenciais MoveBrink</h3>
+                <div class="diferenciais-grid">
+                    <div class="diferencial-item">
+                        <div class="icon">🏷️</div>
+                        <h4>Marca Personalizada</h4>
+                        <p>Impressão da marca da escola nos móveis (opcional)</p>
+                    </div>
+                    <div class="diferencial-item">
+                        <div class="icon">✋</div>
+                        <h4>"Pega Mão" no Encosto</h4>
+                        <p>Facilita o transporte e organização das cadeiras</p>
+                    </div>
+                    <div class="diferencial-item">
+                        <div class="icon">🎒</div>
+                        <h4>Porta Mochila Retrátil</h4>
+                        <p>Presente nas carteiras individuais para maior organização</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             SEÇÃO: CONJUNTO 4 LUGARES
+             ============================== -->
+        <section id="conjunto-4-lugares" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto 4 Lugares</span>
+                    <h2>Mesa + 4 Cadeiras</h2>
+                    <p>Tampo em ABS ou MDF, estrutura em tubo de aço e pintura eletrostática. Ideal para atividades colaborativas.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/conjunto-4-lugares/cjc4-mb-inf-juv-ad.jpg" alt="CJC4 MB" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC4+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC4 MB</p>
+                            <h3 class="product-card-name">Conjunto 4 Lugares — Mesa Quadrada</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p>
+                                    <strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm<br>
+                                    <strong>Juvenil:</strong> Cadeira 38 cm | Mesa 64 cm<br>
+                                    <strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm
+                                </p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/conjunto-4-lugares/cjc4-mb-abs.jpg" alt="CJC4 MB.ABS" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC4+MB.ABS'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC4 MB.ABS</p>
+                            <h3 class="product-card-name">Conjunto 4 Lugares — Tampo ABS</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo 100% em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p>
+                                    <strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm<br>
+                                    <strong>Juvenil:</strong> Cadeira 38 cm | Mesa 64 cm<br>
+                                    <strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm
+                                </p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/conjunto-4-lugares/cjc4-mb-abs-r.jpg" alt="CJC4 MB.ABS.R" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC4+MB.ABS.R'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC4 MB.ABS.R</p>
+                            <h3 class="product-card-name">Conjunto 4 Lugares — Mesa Retangular</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p>
+                                    <strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm<br>
+                                    <strong>Juvenil:</strong> Cadeira 38 cm | Mesa 64 cm<br>
+                                    <strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm
+                                </p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/conjunto-4-lugares/cjc4-mb-c.jpg" alt="CJC4 MB.C" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC4+MB.C'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC4 MB.C</p>
+                            <h3 class="product-card-name">Conjunto 4 Lugares — Mesa Redonda</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo circular em MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p>
+                                    <strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm<br>
+                                    <strong>Juvenil:</strong> Cadeira 38 cm | Mesa 64 cm<br>
+                                    <strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm
+                                </p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/conjunto-4-lugares/cjm-mb-adulto.jpg" alt="CJM MB" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJM+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJM MB</p>
+                            <h3 class="product-card-name">Conjunto 4 Lugares — Meia Lua</h3>
+                            <ul class="product-card-specs">
+                                <li>Mesa em formato meia-lua</li>
+                                <li>Ideal para salas de aula colaborativas</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Cadeiras giratórias com rodízios</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: CONJUNTO 5 LUGARES
+             ============================== -->
+        <section id="conjunto-5-lugares" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto 5 Lugares</span>
+                    <h2>Mesa Pentagonal + 5 Cadeiras</h2>
+                    <p>Mesa em formato pentagonal com tampo em MDF. Perfeita para atividades em grupo no ensino infantil.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up">
+                        <img class="product-card-img" src="images/produtos/conjunto-5-lugares/cjc5-mb-p-infantil.jpg" alt="CJC5 MB.P Infantil" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC5+MB.P'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC5 MB.P</p>
+                            <h3 class="product-card-name">Conjunto 5 Lugares — Pentagonal (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: CONJUNTO 6 LUGARES
+             ============================== -->
+        <section id="conjunto-6-lugares" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto 6 Lugares</span>
+                    <h2>Mesa + 6 Cadeiras</h2>
+                    <p>Disponível em múltiplos formatos de mesa para atender diferentes dinâmicas de sala de aula.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/conjunto-6-lugares/cjc6-mb-infantil.jpg" alt="CJC6 MB Infantil" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC6+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC6 MB</p>
+                            <h3 class="product-card-name">Conjunto 6 Lugares — Hexagonal (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/conjunto-6-lugares/cjc6-mb-concha.jpg" alt="CJC6 MB Concha" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC6+MB+Concha'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC6 MB CONCHA</p>
+                            <h3 class="product-card-name">Conjunto 6 Lugares — Assento Concha (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Assento em formato de concha</li>
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/conjunto-6-lugares/cjc6-mb-h.jpg" alt="CJC6 MB.H" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC6+MB.H'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC6 MB.H</p>
+                            <h3 class="product-card-name">Conjunto 6 Lugares — Hexagonal c/ Buraco Central</h3>
+                            <ul class="product-card-specs">
+                                <li>Mesa hexagonal com abertura central</li>
+                                <li>Tampo em MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/conjunto-6-lugares/cjc6-mb-r.jpg" alt="CJC6 MB.R" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC6+MB.R'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC6 MB.R</p>
+                            <h3 class="product-card-name">Conjunto 6 Lugares — Mesa Retangular</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p>
+                                    <strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm<br>
+                                    <strong>Juvenil:</strong> Cadeira 38 cm | Mesa 64 cm<br>
+                                    <strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm
+                                </p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: CONJUNTO 8 LUGARES
+             ============================== -->
+        <section id="conjunto-8-lugares" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto 8 Lugares</span>
+                    <h2>Mesa Flor + 8 Cadeiras</h2>
+                    <p>Design exclusivo em formato de flor, perfeito para estimular a criatividade e o trabalho colaborativo nas turmas infantis.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up">
+                        <img class="product-card-img" src="images/produtos/conjunto-8-lugares/cjc8-mb-infantil.jpg" alt="CJC8 MB Infantil" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJC8+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJC8 MB</p>
+                            <h3 class="product-card-name">Conjunto 8 Lugares — Formato Flor (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em MDF — formato flor</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: REFEITÓRIO
+             ============================== -->
+        <section id="refeitorio" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto Refeitório</span>
+                    <h2>Mesas e Cadeiras para Refeitório</h2>
+                    <p>Estrutura robusta em tubo de aço com tampo em ABS e MDF, projetada para o uso intensivo de refeitórios escolares.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/refeitorio/cjr-mb-b.jpeg" alt="CJR MB.B" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJR+MB.B'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJR MB.B</p>
+                            <h3 class="product-card-name">Refeitório com Banco (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Mesa com bancos laterais</li>
+                                <li>Tampo em MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/refeitorio/cjr10-mb.jpg" alt="CJR10 MB" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJR10+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJR10 MB</p>
+                            <h3 class="product-card-name">Refeitório 10 Lugares (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/refeitorio/cjr10-mb-l.jpg" alt="CJR10 MB.L" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJR10+MB.L'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJR10 MB.L</p>
+                            <h3 class="product-card-name">Refeitório 10 Lugares c/ Lateral (Infantil)</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Assento e encosto em polipropileno</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/refeitorio/cjr6-mb-concha.jpg" alt="CJR6 MB Concha" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJR6+MB+Concha'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJR6 MB CONCHA</p>
+                            <h3 class="product-card-name">Refeitório 6 Lugares — Assento Concha</h3>
+                            <ul class="product-card-specs">
+                                <li>Assento em formato de concha</li>
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>"Pega mão" no encosto</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/refeitorio/cjr8-mb-concha.jpg" alt="CJR8 MB Concha" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJR8+MB+Concha'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJR8 MB CONCHA</p>
+                            <h3 class="product-card-name">Refeitório 8 Lugares — Assento Concha</h3>
+                            <ul class="product-card-specs">
+                                <li>Assento em formato de concha</li>
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Pés de metal</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/refeitorio/cjr10-mb-concha.jpg" alt="CJR10 MB Concha" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJR10+MB+Concha'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJR10 MB CONCHA</p>
+                            <h3 class="product-card-name">Refeitório 10 Lugares — Assento Concha</h3>
+                            <ul class="product-card-specs">
+                                <li>Assento em formato de concha</li>
+                                <li>Tampo em ABS e MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Pés de metal</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Infantil:</strong> Cadeira 35 cm | Mesa 59 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: BERÇO MATERNAL
+             ============================== -->
+        <section class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Berço Maternal</span>
+                    <h2>Berço para Creche e Maternal</h2>
+                    <p>Material em MDF com estrutura em tubo de aço e rodízios para fácil movimentação.</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up">
+                        <img class="product-card-img" src="images/produtos/refeitorio/berco-maternal.jpg" alt="Berço Maternal" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=Ber%C3%A7o+Maternal'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">BERÇO MATERNAL</p>
+                            <h3 class="product-card-name">Berço Maternal com Rodízios</h3>
+                            <ul class="product-card-specs">
+                                <li>Material em MDF</li>
+                                <li>Estrutura em tubo de aço com rodízios</li>
+                                <li>Pintura eletrostática</li>
+                                <li>Fácil limpeza e manutenção</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Largura:</strong> 120 cm | <strong>Profundidade:</strong> 60 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: CONJUNTO PROFESSOR
+             ============================== -->
+        <section id="professor" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Conjunto Professor</span>
+                    <h2>Mesa e Cadeira para Professores</h2>
+                    <p>Ergonomia e funcionalidade para o espaço do professor. Tampo em ABS ou MDF com gavetas e cadeira giratória.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up">
+                        <img class="product-card-img" src="images/produtos/professor/cjp-mb-adulto.jpg" alt="CJP MB Adulto" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=CJP+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">CJP MB</p>
+                            <h3 class="product-card-name">Conjunto Professor — Mesa com Gaveta + Cadeira Giratória</h3>
+                            <ul class="product-card-specs">
+                                <li>Tampo em ABS ou MDF</li>
+                                <li>Estrutura em tubo de aço</li>
+                                <li>Cadeira giratória com rodízios</li>
+                                <li>Mesa com gavetas e fechadura</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Adulto:</strong> Cadeira 46 cm | Mesa 76 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================
+             SEÇÃO: ARMÁRIOS ESCOLARES
+             ============================== -->
+        <section id="armarios" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Armários Escolares</span>
+                    <h2>Armários e Estantes</h2>
+                    <p>Estrutura em MDF com pé em tubo de aço e niveladores. Cores alegres para tornar o ambiente mais dinâmico.</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-8pc.jpg" alt="AR MB 8PC" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+8PC'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB 8PC</p>
+                            <h3 class="product-card-name">Armário 8 Prateleiras Coloridas</h3>
+                            <ul class="product-card-specs">
+                                <li>Estrutura em MDF</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                                <li>Pintura eletrostática</li>
+                                <li>8 compartimentos coloridos</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 90 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-colmeia.jpeg" alt="AR MB Colméia" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+Colm%C3%A9ia'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB COLMÉIA</p>
+                            <h3 class="product-card-name">Armário Colméia</h3>
+                            <ul class="product-card-specs">
+                                <li>Estrutura em MDF</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                                <li>Múltiplos compartimentos coloridos</li>
+                                <li>Inclui armário com porta</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 320 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-cartolina.jpeg" alt="AR MB Cartolina" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+Cartolina'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB CARTOLINA</p>
+                            <h3 class="product-card-name">Armário Porta Cartolinas</h3>
+                            <ul class="product-card-specs">
+                                <li>Estrutura em MDF</li>
+                                <li>Ideal para guardar cartolinas e papéis</li>
+                                <li>Divisórias coloridas</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 90 cm | <strong>Largura:</strong> 90 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/armarios/ar2-mb.jpeg" alt="AR2 MB" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR2+MB'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR2 MB</p>
+                            <h3 class="product-card-name">Armário 2 Portas</h3>
+                            <ul class="product-card-specs">
+                                <li>Estrutura em MDF</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                                <li>2 portas com fechamento</li>
+                                <li>Pintura eletrostática</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 80 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-8nc.jpeg" alt="AR MB 8NC" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+8NC'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB 8NC</p>
+                            <h3 class="product-card-name">Estante Casa — 8 Nichos Coloridos</h3>
+                            <ul class="product-card-specs">
+                                <li>Design em formato de casinha</li>
+                                <li>Estrutura em MDF</li>
+                                <li>8 nichos coloridos abertos</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 80 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-8na.jpeg" alt="AR MB 8NA" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+8NA'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB 8NA</p>
+                            <h3 class="product-card-name">Estante 8 Nichos — Colorido Assimétrico</h3>
+                            <ul class="product-card-specs">
+                                <li>Nichos em tamanhos variados</li>
+                                <li>Estrutura em MDF</li>
+                                <li>Layout assimétrico e colorido</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 80 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-revista.jpeg" alt="AR MB Revista" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+Revista'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB REVISTA</p>
+                            <h3 class="product-card-name">Estante Porta Revistas</h3>
+                            <ul class="product-card-specs">
+                                <li>Inclinação frontal para exposição</li>
+                                <li>Estrutura em MDF</li>
+                                <li>Divisórias coloridas</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 80 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-bau.png" alt="AR MB Baú" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+Ba%C3%BA'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB BAÚ</p>
+                            <h3 class="product-card-name">Armário Baú Multiportas</h3>
+                            <ul class="product-card-specs">
+                                <li>Múltiplas portas coloridas</li>
+                                <li>Compartimento inferior tipo baú</li>
+                                <li>Estrutura em MDF</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 180 cm | <strong>Largura:</strong> 120 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                        <img class="product-card-img" src="images/produtos/armarios/ar-mb-8p.jpg" alt="AR MB 8P" loading="lazy" onerror="this.src='https://placehold.co/400x300/eef4fb/005A9C?text=AR+MB+8P'">
+                        <div class="product-card-body">
+                            <p class="product-card-code">AR MB 8P</p>
+                            <h3 class="product-card-name">Armário 8 Portas Coloridas</h3>
+                            <ul class="product-card-specs">
+                                <li>8 portas em cores vibrantes</li>
+                                <li>Estrutura em MDF</li>
+                                <li>Ideal para guarda-volumes</li>
+                                <li>Pé em tubo de aço com niveladores</li>
+                            </ul>
+                            <div class="product-card-sizes">
+                                <p><strong>Altura:</strong> 160 cm | <strong>Largura:</strong> 80 cm | <strong>Prof.:</strong> 45 cm</p>
+                            </div>
+                            <a href="contato.html" class="product-card-cta">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="catalogo-complementar" class="product-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="tag">Catálogo Técnico</span>
+                    <h2>Linhas Complementares Confirmadas na Revista</h2>
+                    <p>Além dos produtos já destacados acima, a revista e o catálogo técnico da Movebrink apresentam outras linhas escolares que complementam o portfólio do site.</p>
+                </div>
+
+                <div class="line-catalog-grid">
+                    <div class="line-catalog-card" data-aos="fade-up">
+                        <img class="line-catalog-image" src="images/catalogo/catalogo-conjunto-individual-e-2-lugares.png" alt="Página do catálogo com conjuntos individuais e coletivos 2 lugares">
+                        <h3>Conjuntos Coletivos 2 Lugares</h3>
+                        <p>O catálogo técnico também apresenta a família de conjuntos coletivos para 2 lugares, pensada para composições compactas e atividades colaborativas.</p>
+                        <ul class="tech-code-list">
+                            <li><strong>Códigos do catálogo:</strong> MOV-CJ-CO-02-FIT02-A, MOV-CJ-CO-02-FIT02-B e MOV-CJ-CO-02-FIT02-C.</li>
+                            <li><strong>Aplicação:</strong> salas de apoio, leitura, atividades em dupla e composições modulares.</li>
+                        </ul>
+                    </div>
+
+                    <div class="line-catalog-card" data-aos="fade-up" data-aos-delay="100">
+                        <img class="line-catalog-image" src="images/catalogo/catalogo-armarios-cadeiras.png" alt="Página do catálogo com armários e cadeiras escolares">
+                        <h3>Cadeiras Escolares Avulsas</h3>
+                        <p>A linha técnica do catálogo inclui modelos avulsos para diferentes usos, como salas de aula, apoio universitário e composições independentes.</p>
+                        <ul class="tech-code-list">
+                            <li><strong>Códigos do catálogo:</strong> MOV-CAD-FIT01, MOV-CAD-FIT02, MOV-CAD-FE01, MOV-CAD-ISO A01, MOV-CAD-UNI-FIT01, MOV-CAD-UNI-FIT02 e MOV-CAD-UNI-001.</li>
+                            <li><strong>Destaque:</strong> opções com prancheta, linha ISO e modelos universitários.</li>
+                        </ul>
+                    </div>
+
+                    <div class="line-catalog-card" data-aos="fade-up">
+                        <img class="line-catalog-image" src="images/catalogo/catalogo-fnde.png" alt="Página do catálogo com mobiliário FNDE">
+                        <h3>Mobiliário FNDE e Linhas Institucionais</h3>
+                        <p>O catálogo Movebrink também mostra uma linha voltada a composições padronizadas para instituições e ambientes educacionais com especificações FNDE.</p>
+                        <ul class="tech-code-list">
+                            <li><strong>Conjuntos e mesas:</strong> CJP 01, CJA 01B, CJA 03B, CJA 04B, CJA 05B, CJA 06B, Mesa Acessível FNDE, CJC 01, M2C 01, M2C 03, M2C 04 e M2C 06.</li>
+                            <li><strong>Bancos e apoio:</strong> M2B 01, M2B 04, M2B 06 e BERÇO.</li>
+                        </ul>
+                    </div>
+
+                    <div class="line-catalog-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Referências Técnicas de Armários</h3>
+                        <p>As versões exibidas no site representam a linha atual da revista, enquanto o catálogo técnico mostra referências adicionais para armários e estantes escolares.</p>
+                        <ul class="tech-code-list">
+                            <li><strong>Armários técnicos:</strong> MOV-AR-02P B01, MOV-AR-02P ES, MOV-AR-001, MOV-AR-02P-001A, MOV-AR-02P-001B.</li>
+                            <li><strong>Portas coloridas:</strong> MOV-AR-04P-001, MOV-AR-04P-002, MOV-AR-06P, MOV-AR-08P, MOV-AR-09P e MOV-AR-09P 01.</li>
+                            <li><strong>Linhas especiais:</strong> MOV-AR-Colméia 001, 002, 003 e 004; MOV-AR-Cartolina 001A e 001B; MOV-AR-Revista 001.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PALETA PANTONE -->
+        <div class="pantone-section" data-aos="fade-up">
+            <div class="container">
+                <h3>Cores Disponíveis — Linha Escolar</h3>
+                <p>Todos os modelos podem ser produzidos nas cores abaixo. Personalize o ambiente da sua escola!</p>
+                <div class="pantone-swatches">
+                    <div class="swatch" style="background-color: #e8472a;">18-1755</div>
+                    <div class="swatch" style="background-color: #e8832a;">16-4120</div>
+                    <div class="swatch" style="background-color: #e8c22a;">15-1150</div>
+                    <div class="swatch" style="background-color: #c8d84a;">14-3512</div>
+                    <div class="swatch" style="background-color: #4caf50;">3415 C</div>
+                    <div class="swatch" style="background-color: #2a7ae8;">287 C</div>
+                    <div class="swatch" style="background-color: #1a3fa8;">193 C</div>
+                    <div class="swatch" style="background-color: #7b3fb8;">1235 C</div>
+                    <div class="swatch" style="background-color: #e84289;">151 C</div>
+                    <div class="swatch" style="background-color: #3ecad8;">13-06-51</div>
+                    <div class="swatch" style="background-color: #f5f5f0; color: #555;">12-0650</div>
+                    <div class="swatch" style="background-color: #555;">425 C</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA ORÇAMENTO -->
+        <div class="orcamento-cta" data-aos="fade-up">
+            <div class="container">
+                <h2>Pronto para montar o ambiente ideal?</h2>
+                <p>Fale com nossa equipe e receba um orçamento personalizado sem compromisso.</p>
+                <a href="contato.html" class="cta-button-hero">Solicitar Orçamento</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo"><img src="images/logo1.png" alt="Logo Movebrink"></a>
+                    <p>Criando ambientes de trabalho e estudo mais funcionais e inspiradores.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="moveis-escolares.html">Móveis Escolares</a></li>
+                        <li><a href="estofados.html">Estofados</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Precisa de Ajuda?</h4>
+                    <p>Fale conosco</p>
+                    <p><strong>(42) 3463-1492</strong></p>
+                    <p>contato@movebrink.com.br</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Receba novidades</h4>
+                    <p>Inscreva-se para receber ofertas e lançamentos.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button type="submit">Inscrever</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Movebrink. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const navLinks = document.querySelectorAll('.cat-nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-140px 0px -60% 0px' });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
