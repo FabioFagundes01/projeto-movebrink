@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linha de Estofados - Movebrink</title>
+    <title>Linha de Cadeiras - Movebrink</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,6 +243,9 @@
 
         .est-card-body {
             padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .est-card-code {
@@ -260,6 +263,7 @@
             color: #1a2b3c;
             margin-bottom: 12px;
             line-height: 1.35;
+            min-height: 2.8em;
         }
 
         .est-card-tags {
@@ -267,6 +271,8 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-bottom: 14px;
+            min-height: 58px;
+            align-content: flex-start;
         }
 
         .est-tag {
@@ -299,6 +305,7 @@
             font-weight: 600;
             font-size: 13px;
             transition: background-color 0.2s ease;
+            margin-top: auto;
         }
 
         .est-card-cta:hover {
@@ -484,6 +491,10 @@
                 padding: 12px 14px;
                 font-size: 12px;
             }
+            .est-card-name,
+            .est-card-tags {
+                min-height: 0;
+            }
         }
 
         @media (max-width: 1180px) {
@@ -504,7 +515,7 @@
                     <li><a href="index.html">Início</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
                     <li><a href="moveis-escolares.html">Móveis Escolares</a></li>
-                    <li><a href="estofados.html" style="color: #5bc8f5;">Estofados</a></li>
+                    <li><a href="estofados.html" style="color: #5bc8f5;">Cadeiras</a></li>
                     <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
@@ -522,10 +533,10 @@
         <div class="container">
             <div class="andres-badge" data-aos="fade-down">
                 <div class="dot"></div>
-                <span>Linha Andres Estofados — Distribuída pela MoveBrink</span>
+                <span>Linha Andres de Cadeiras — Distribuída pela MoveBrink</span>
             </div>
             <h1 data-aos="fade-up" data-aos-delay="100">
-                Cadeiras para <span>Escritório</span><br>e Ambientes Corporativos
+                Cadeiras para <span>Apoio</span><br>e Ambientes de Atendimento
             </h1>
             <p data-aos="fade-up" data-aos-delay="200">
                 Conforto, ergonomia e durabilidade em cada modelo. Certificados pela ABNT NBR 13962, com sistema de gestão ISO 9001.
@@ -580,7 +591,7 @@
             <div class="container">
                 <div class="est-section-header" data-aos="fade-up">
                     <span class="tag">Catálogo Oficial</span>
-                    <h2>Referência Visual Andres Estofados 2025</h2>
+                    <h2>Referência Visual Andres 2025</h2>
                     <p>As imagens desta página foram alinhadas ao catálogo oficial enviado. Os cards abaixo utilizam recortes e referências visuais das páginas do catálogo para refletir com mais fidelidade a linha comercial apresentada.</p>
                 </div>
 
@@ -588,7 +599,7 @@
                     <div class="line-catalog-card" data-aos="fade-up">
                         <img class="line-catalog-image" src="images/catalogo/andres-page-01.png" alt="Página 1 do catálogo oficial Andres Estofados 2025">
                         <h3>Página 1 do Catálogo</h3>
-                        <p>Confirma as linhas AES, AEE, AEL e AEB, incluindo cadeiras simples, escritório, longarinas e banquetas com seus respectivos códigos técnicos.</p>
+                        <p>Confirma as linhas AES, AEE, AEL e AEB, incluindo cadeiras simples, giratórias, longarinas e banquetas com seus respectivos códigos técnicos.</p>
                     </div>
 
                     <div class="line-catalog-card" data-aos="fade-up" data-aos-delay="100">
@@ -598,7 +609,7 @@
                     </div>
                 </div>
 
-                <p class="catalog-note" data-aos="fade-up">Os nomes, códigos e agrupamentos desta página foram verificados com o catálogo Andres Estofados 2025. As imagens locais em <strong>images/estofados</strong> agora usam referências oficiais do material enviado.</p>
+                <p class="catalog-note" data-aos="fade-up">Os nomes, códigos e agrupamentos desta página foram verificados com o catálogo Andres 2025. As imagens locais em <strong>images/estofados</strong> agora usam referências oficiais do material enviado.</p>
             </div>
         </section>
 
@@ -805,14 +816,14 @@
         </section>
 
         <!-- ==============================
-             CADEIRAS ESCRITÓRIO (AEE)
+             CADEIRAS GIRATÓRIAS (AEE)
              ============================== -->
         <section id="cadeiras-giratorias" class="est-section">
             <div class="container">
                 <div class="est-section-header" data-aos="fade-up">
-                    <span class="tag">Linha Escritório</span>
-                    <h2>AEE — Cadeiras de Escritório s/ Braço</h2>
-                    <p>Cadeiras giratórias ergonômicas para uso em escritórios, call centers e home office.</p>
+                    <span class="tag">Linha Giratória</span>
+                    <h2>AEE — Cadeiras Giratórias s/ Braço</h2>
+                    <p>Cadeiras giratórias ergonômicas para uso em atendimento, apoio administrativo e rotina de trabalho.</p>
                 </div>
 
                 <div class="est-grid">
@@ -822,7 +833,7 @@
                         </div>
                         <div class="est-card-body">
                             <p class="est-card-code">AEE 2001F S/B</p>
-                            <h3 class="est-card-name">Cadeira Escritório Fixa s/ Braço</h3>
+                            <h3 class="est-card-name">Cadeira Fixa s/ Braço</h3>
                             <div class="est-card-tags">
                                 <span class="est-tag">Sem braço</span>
                                 <span class="est-tag">Fixa</span>
@@ -838,7 +849,7 @@
                         </div>
                         <div class="est-card-body">
                             <p class="est-card-code">AEE 2002F S/B</p>
-                            <h3 class="est-card-name">Cadeira Escritório — Encosto Tela s/ Braço</h3>
+                            <h3 class="est-card-name">Cadeira Tela s/ Braço</h3>
                             <div class="est-card-tags">
                                 <span class="est-tag">Tela/Mesh</span>
                                 <span class="est-tag">Sem braço</span>
@@ -951,7 +962,7 @@
                         </div>
                         <div class="est-card-body">
                             <p class="est-card-code">AEE 2002FC S/B</p>
-                            <h3 class="est-card-name">Cadeira Caixa de Escritório s/ Braço</h3>
+                            <h3 class="est-card-name">Cadeira Caixa s/ Braço</h3>
                             <div class="est-card-tags">
                                 <span class="est-tag">Caixa/Alta</span>
                                 <span class="est-tag">Sem braço</span>
@@ -1016,7 +1027,7 @@
                         </div>
                         <div class="est-card-body">
                             <p class="est-card-code">AEL 2001 B/C 3L</p>
-                            <h3 class="est-card-name">Longarina Escritório 3 Lugares c/ Braço Cromado</h3>
+                            <h3 class="est-card-name">Longarina 3 Lugares c/ Braço Cromado</h3>
                             <div class="est-card-tags">
                                 <span class="est-tag">3 lugares</span>
                                 <span class="est-tag">Braço cromado</span>
@@ -1032,7 +1043,7 @@
                         </div>
                         <div class="est-card-body">
                             <p class="est-card-code">AEL 2002 S/B 3L</p>
-                            <h3 class="est-card-name">Longarina Escritório 3 Lugares s/ Braço</h3>
+                            <h3 class="est-card-name">Longarina 3 Lugares s/ Braço</h3>
                             <div class="est-card-tags">
                                 <span class="est-tag">3 lugares</span>
                                 <span class="est-tag">Sem braço</span>
@@ -1276,7 +1287,7 @@
                 <div class="est-section-header" data-aos="fade-up">
                     <span class="tag">Linha Plataforma</span>
                     <h2>AEP — Cadeiras Plataforma e Operacionais</h2>
-                    <p>Cadeiras operacionais robustas, ideais para uso intenso em escritórios, indústrias e postos de trabalho.</p>
+                    <p>Cadeiras operacionais robustas, ideais para uso intenso em atendimento, indústrias e postos de trabalho.</p>
                 </div>
 
                 <div class="est-grid">
@@ -1704,7 +1715,7 @@
                 <div class="cert-banner-inner">
                     <div class="cert-banner-text">
                         <h3>Qualidade Certificada</h3>
-                        <p>A linha Andres Estofados é distribuída pela MoveBrink e possui todas as certificações exigidas pelo mercado, garantindo segurança, durabilidade e conformidade com as normas brasileiras.</p>
+                        <p>A linha Andres de cadeiras é distribuída pela MoveBrink e possui as certificações exigidas pelo mercado, garantindo segurança, durabilidade e conformidade com as normas brasileiras.</p>
                     </div>
                     <div class="cert-list">
                         <div class="cert-item">
@@ -1713,7 +1724,7 @@
                         </div>
                         <div class="cert-item">
                             <i class="fas fa-shield-alt"></i>
-                            <div>ABNT NBR 13962<span>Móveis para Escritório — Cadeiras</span></div>
+                            <div>ABNT NBR 13962<span>Cadeiras para uso profissional</span></div>
                         </div>
                         <div class="cert-item">
                             <i class="fas fa-award"></i>
@@ -1765,7 +1776,7 @@
                         <li><a href="index.html">Início</a></li>
                         <li><a href="sobre.html">Sobre</a></li>
                         <li><a href="moveis-escolares.html">Móveis Escolares</a></li>
-                        <li><a href="estofados.html">Estofados</a></li>
+                        <li><a href="estofados.html">Cadeiras</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
                 </div>
@@ -1816,9 +1827,3 @@
     </script>
 </body>
 </html>
-        .est-anchor {
-            display: block;
-            position: relative;
-            top: -145px;
-            visibility: hidden;
-        }
